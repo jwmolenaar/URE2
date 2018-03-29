@@ -18,6 +18,14 @@
         "entryPath": "/test-resources"
       },
       "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/UreRaceData/OData",
+      "target": {
+        "type": "destination",
+        "name": "McCoy_URE"
+      },
+      "description": "McCoy URE"
     }
   ],
   "sendWelcomeFileRedirect": true

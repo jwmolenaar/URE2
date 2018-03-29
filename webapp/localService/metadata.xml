@@ -1,0 +1,37 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="UreRaceData.OData.UreMetadata">
+            <EntityType Name="URE_METADATAType">
+                <Key>
+                    <PropertyRef Name="RACE_ID"/>
+                    <PropertyRef Name="RUN_ID"/>
+                </Key>
+                <Property Name="RACE_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="RUN_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="START_TIME" Type="Edm.DateTime"/>
+                <Property Name="END_TIME" Type="Edm.DateTime"/>
+                <Property Name="CIRCUIT" Type="Edm.String" MaxLength="100"/>
+                <Property Name="RACE_TYPE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="WEATHER" Type="Edm.String" MaxLength="20"/>
+                <Property Name="TEMPERATURE" Type="Edm.Int32"/>
+                <Property Name="NOTES" Type="Edm.String" MaxLength="500"/>
+                <Property Name="CAR_ID" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CAR_NOTES" Type="Edm.String" MaxLength="500"/>
+                <Property Name="NAME_DRIVER" Type="Edm.String" MaxLength="100"/>
+                <Property Name="LENGTH_DRIVER" Type="Edm.Int32"/>
+                <Property Name="WEIGHT_DRIVER" Type="Edm.Int32"/>
+                <Property Name="DRIVER_NOTES" Type="Edm.String" MaxLength="500"/>
+                <Property Name="RACE_DESCRIPTION" Type="Edm.String" MaxLength="500"/>
+                <Property Name="DISTANCE" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityContainer Name="UreMetadata" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="URE_METADATA" EntityType="UreRaceData.OData.UreMetadata.URE_METADATAType"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
