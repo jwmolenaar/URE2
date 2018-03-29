@@ -5,10 +5,19 @@ sap.ui.define([
 ], function(jQuery, Controller, JSONModel) {
 	"use strict";
 
+	function navigateNewRun(oRouter) {
+		oRouter.navTo("newrun");
+	}
+
 	return Controller.extend("mccoy.com.URE2.controller.Startpage", {
 		onInit: function() {
-		// test
-
+		},
+		
+		onPressNewRun : function(oEvent) {
+			var oRouter = this.getOwnerComponent().getRouter();
+			navigateNewRun(oRouter);
 		}
 	});
+	
+	
 });

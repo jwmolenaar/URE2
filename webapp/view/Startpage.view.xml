@@ -13,7 +13,8 @@
 			<layout:HorizontalLayout allowWrapping="true">
 				<GenericTile
 					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="Nieuwe run registreren">
+					header="Nieuwe run registreren"
+					press="onPressNewRun">
 					<TileContent>
 						<ImageContent src="sap-icon://accelerated" />
 					</TileContent>

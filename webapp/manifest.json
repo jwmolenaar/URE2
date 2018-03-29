@@ -90,12 +90,27 @@
 					"name": "home",
 					"pattern": "",
 					"target": "startpage"
+				},
+				{
+					"name": "newrun",
+					"pattern": "newrun",
+					"target": "NewRun"
 				}
 			],
 			"targets": {
 				"startpage": {
 					"viewName": "Startpage",
-					"viewlevel": 0
+					"viewlevel": 0,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"async": true,
+					"viewPath": "mccoy.com.URE2.view",
+					"controlAggregation": "pages",
+					"controlId": "URE2App"
+				},
+				"NewRun": {
+					"viewType": "XML",
+					"viewName": "NewRun"
 				}
 			}
 		}
