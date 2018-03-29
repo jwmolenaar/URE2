@@ -1,0 +1,38 @@
+{
+	"mVersionDependency": {
+		"UI5.sap/fileviewer.sap_belize": "1.52.2",
+		"UI5.sap/fileviewer": "1.52.2",
+		"UI5": "1.52.4"
+	},
+	"sEntity": "Theme",
+	"sId": "uremccoy01",
+	"sLabel": "Ure McCoy",
+	"sVendor": "McCoy",
+	"oExtends": "UI5.sap/fileviewer.sap_belize",
+	"aBundled": [
+		"uremccoy01--Contrast"
+	],
+	"sTextDirections": "LTR",
+	"sType": "STANDARD",
+	"sThemability": "PUBLIC",
+	"mCssScopes": {
+		"library": {
+			"sEmbeddingMethod": "APPEND",
+			"aScopes": [
+				{
+					"sLabel": "Contrast",
+					"sSelector": "sapContrast",
+					"sThemeIdSuffix": "Contrast",
+					"sThemability": "PUBLIC",
+					"aThemabilityFilter": [
+						"Color"
+					],
+					"rExcludeSelector": "\\.sapContrastPlus\\W",
+					"sEmbeddedFile": "uremccoy01--Contrast.library",
+					"sEmbeddedCompareFile": "library"
+				}
+			],
+			"sBaseFile": "library"
+		}
+	}
+}

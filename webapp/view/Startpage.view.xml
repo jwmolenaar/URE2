@@ -1,0 +1,70 @@
+<mvc:View
+	controllerName="mccoy.com.URE2.controller.Startpage"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	xmlns:microchart="sap.suite.ui.microchart">
+	<Page title="{i18n>startpageTitle}">
+		<layout:VerticalLayout class="sapUiResponsiveMargin">
+			<Title
+				titleStyle="H3"
+				text="Direct naar"
+				class="sapUiTinyMarginBegin" />
+			<layout:HorizontalLayout allowWrapping="true">
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+					header="Nieuwe run registreren">
+					<TileContent>
+						<ImageContent src="sap-icon://accelerated" />
+					</TileContent>
+				</GenericTile>
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+					header="Overzicht geregistreerde runs">
+					<TileContent>
+						<ImageContent src="sap-icon://accelerated" />
+					</TileContent>
+				</GenericTile>
+			</layout:HorizontalLayout>
+			<Title
+				titleStyle="H3"
+				text="Andere apps"
+				class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
+			<layout:HorizontalLayout allowWrapping="true">
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+					header="Tweede rij, eerste app"
+					subheader='Tekst'>
+					<tileContent>
+						<TileContent>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+					header="Tweede rij, tweede app"
+					subheader='Tekst'>
+					<tileContent>
+						<TileContent>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+			</layout:HorizontalLayout>
+			<Title
+				titleStyle="H2"
+				text="{i18n>startpageLinksGroupTitle}"
+				class="sapUiTinyMarginBegin sapUiMediumMarginTop" />
+			<layout:HorizontalLayout allowWrapping="true">
+				<GenericTile
+					header="{i18n>startpageLineTile1Title}"
+					subheader="{i18n>startpageLineTile1SubTitle}"
+					mode="LineMode"
+					class="sapUiTinyMarginBegin" />
+				<GenericTile
+					header="{i18n>startpageLineTile2Title}"
+					mode="LineMode"
+					class="sapUiTinyMarginBegin" />
+			</layout:HorizontalLayout>
+		</layout:VerticalLayout>
+	</Page>
+</mvc:View>

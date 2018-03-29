@@ -1,0 +1,46 @@
+{
+	"mVersionDependency": {
+		"Base.baseLib.sap_belize_plus": "11.0.4",
+		"Base.baseLib": "11.0.4",
+		"Base": "11.0.4"
+	},
+	"sEntity": "Theme",
+	"sId": "uremccoy01--Contrast",
+	"oExtends": "Base.baseLib.sap_belize_plus",
+	"aFiles": [
+		"base",
+		"preview",
+		"custom"
+	],
+	"aBundled": [
+		"uremccoy01"
+	],
+	"sBuildOptions": "SKIP",
+	"sType": "ABSTRACT",
+	"sThemability": "PRIVATE",
+	"mData": {
+		"mThemeMasterState": {
+			"mSourceInfo": {
+				"sCreated": "2018-02-05T14:24:28.223Z",
+				"sLastModified": "2018-02-05T14:26:08.064Z",
+				"aVersionHistory": [
+					{
+						"sDate": "2018-02-05T14:26:08.064Z",
+						"mVersion": {
+							"UI5": "1.52.4",
+							"Base": "11.0.4",
+							"UR": "10.30.7.292941.0"
+						}
+					},
+					{
+						"sDate": "2018-02-05T14:24:28.223Z",
+						"mVersion": {
+							"UI5": "1.52.4",
+							"Base": "11.0.4"
+						}
+					}
+				]
+			}
+		}
+	}
+}

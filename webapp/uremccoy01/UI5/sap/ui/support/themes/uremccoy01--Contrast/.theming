@@ -1,0 +1,17 @@
+{
+	"mVersionDependency": {
+		"UI5.sap/ui/support.sap_belize_plus": "1.52.4",
+		"UI5.sap/ui/support": "1.52.4",
+		"UI5": "1.52.4"
+	},
+	"sEntity": "Theme",
+	"sId": "uremccoy01--Contrast",
+	"sVendor": "McCoy",
+	"oExtends": "UI5.sap/ui/support.sap_belize_plus",
+	"aBundled": [
+		"uremccoy01"
+	],
+	"sBuildOptions": "SKIP",
+	"sType": "ABSTRACT",
+	"sThemability": "PRIVATE"
+}
