@@ -7,7 +7,7 @@ sap.ui.define([
 
 	return Controller.extend("mccoy.com.URE2.controller.Startpage", {
 		onInit: function() {
-		// test comment
+		// test comment 
 
 		}
 	});
