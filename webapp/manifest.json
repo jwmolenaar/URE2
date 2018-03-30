@@ -39,10 +39,7 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_belize"
-		]
+		"supportedThemes": ["sap_hcb", "sap_belize"]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -67,14 +64,22 @@
 				"settings": {
 					"bundleName": "mccoy.com.URE2.i18n.i18n"
 				}
+			},
+			"UreMetadata": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "UreMetadata.xsodata",
+				"preload": true
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -85,18 +90,15 @@
 				"controlAggregation": "pages",
 				"controlId": "URE2App"
 			},
-			"routes": [
-				{
-					"name": "home",
-					"pattern": "",
-					"target": "startpage"
-				},
-				{
-					"name": "newrun",
-					"pattern": "newrun",
-					"target": "NewRun"
-				}
-			],
+			"routes": [{
+				"name": "home",
+				"pattern": "",
+				"target": "startpage"
+			}, {
+				"name": "newrun",
+				"pattern": "newrun",
+				"target": "NewRun"
+			}],
 			"targets": {
 				"startpage": {
 					"viewName": "Startpage",
