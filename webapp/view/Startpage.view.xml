@@ -20,10 +20,13 @@
 					</TileContent>
 				</GenericTile>
 				<GenericTile
+					id="tileAllRuns"
 					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
 					header="Overzicht geregistreerde runs">
 					<TileContent>
-						<ImageContent src="sap-icon://accelerated" />
+						<NumericContent
+							visible="{worklistView>/tileAllRunsNumVisable}"
+							value="{worklistView>/tileAllRunsNumValue}" />
 					</TileContent>
 				</GenericTile>
 			</layout:HorizontalLayout>
