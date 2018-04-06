@@ -102,17 +102,11 @@
 			"targets": {
 				"startpage": {
 					"viewName": "Startpage",
-					"viewlevel": 0,
-					"routerClass": "sap.m.routing.Router",
-					"viewType": "XML",
-					"async": true,
-					"viewPath": "mccoy.com.URE2.view",
-					"controlAggregation": "pages",
-					"controlId": "URE2App"
+					"viewlevel": 0
 				},
 				"NewRun": {
-					"viewType": "XML",
-					"viewName": "NewRun"
+					"viewName": "NewRun",
+					"viewLevel": 0
 				}
 			}
 		}
