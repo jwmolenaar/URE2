@@ -43,6 +43,10 @@ sap.ui.define([
 		onPressNewRun: function(oEvent) {
 			var oRouter = this.getOwnerComponent().getRouter();
 			navigateNewRun(oRouter);
+		},
+		
+		onPressDashboard: function(oEvent) {
+			this.getOwnerComponent().getRouter().navTo("dashboard");
 		}
 	});
 

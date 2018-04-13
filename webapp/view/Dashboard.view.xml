@@ -1,0 +1,24 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="mccoy.com.URE2.controller.Dashboard"
+	xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>dashboardTitle}" showNavButton="true" navButtonPress="onBack">
+				<layout:VerticalLayout class="sapUiResponsiveMargin">
+					<Title titleStyle="H3" text="" class="sapUiTinyMarginBegin" />
+					<layout:HorizontalLayout allowWrapping="true">
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Tile 1">
+						<TileContent>
+							<ImageContent src="sap-icon://accelerated"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Tile 2">
+					<TileContent>
+						<NumericContent visible="true" value="27"/>
+					</TileContent>
+				</GenericTile>
+			</layout:HorizontalLayout>
+		</layout:VerticalLayout>
+	</Page>
+</pages>
+</App>
+</mvc:View>

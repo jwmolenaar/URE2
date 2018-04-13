@@ -105,6 +105,11 @@
 					"name": "newrun",
 					"pattern": "newrun",
 					"target": "NewRun"
+				},
+				{
+					"name": "dashboard",
+					"pattern": "dashboard",
+					"target": "Dashboard"
 				}
 			],
 			"targets": {
@@ -128,15 +133,9 @@
 					"controlAggregation": "pages",
 					"controlId": "URE2App"
 				},
-				"dashboard": {
-					"viewName": "dashboard",
-					"viewlevel": 2,
-					"routerClass": "sap.m.routing.Router",
+				"Dashboard": {
 					"viewType": "XML",
-					"async": true,
-					"viewPath": "mccoy.com.URE2.view",
-					"controlAggregation": "pages",
-					"controlId": "URE2App"
+					"viewName": "Dashboard"
 				}
 			}
 		}

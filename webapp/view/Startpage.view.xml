@@ -32,22 +32,14 @@
 			</layout:HorizontalLayout>
 			<Title
 				titleStyle="H3"
-				text="Andere apps"
+				text="Tijdelijke apps"
 				class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
 			<layout:HorizontalLayout allowWrapping="true">
 				<GenericTile
 					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="Tweede rij, eerste app"
-					subheader='Tekst'>
-					<tileContent>
-						<TileContent>
-						</TileContent>
-					</tileContent>
-				</GenericTile>
-				<GenericTile
-					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="Tweede rij, tweede app"
-					subheader='Tekst'>
+					header="Dashboard (zonder run)"
+					subheader="Tijdelijk"
+					press="onPressDashboard">
 					<tileContent>
 						<TileContent>
 						</TileContent>
