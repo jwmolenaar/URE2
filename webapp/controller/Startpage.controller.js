@@ -22,9 +22,11 @@ sap.ui.define([
 
 			//Get number of runs.
 			//var oUreMetadata = sap.ui.getCore().getModel("UreMetadata");
-			var oUreMetadata = new sap.ui.model.odata.v2.ODataModel("/UreRaceData/OData/UreMetadata.xsodata/", {
+			var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
+			
+			/*var oUreMetadata = new sap.ui.model.odata.v2.ODataModel("/UreRaceData/OData/UreMetadata.xsodata/", {
 				useBatch: false
-			});
+			});*/
 
 			var sPath = "/URE_METADATA/$count";
 			oUreMetadata.read(sPath, {
