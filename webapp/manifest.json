@@ -39,7 +39,10 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_hcb", "sap_belize"]
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -77,9 +80,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -90,23 +95,48 @@
 				"controlAggregation": "pages",
 				"controlId": "URE2App"
 			},
-			"routes": [{
-				"name": "home",
-				"pattern": "",
-				"target": "startpage"
-			}, {
-				"name": "newrun",
-				"pattern": "newrun",
-				"target": "NewRun"
-			}],
+			"routes": [
+				{
+					"name": "home",
+					"pattern": "",
+					"target": "startpage"
+				},
+				{
+					"name": "newrun",
+					"pattern": "newrun",
+					"target": "NewRun"
+				}
+			],
 			"targets": {
 				"startpage": {
 					"viewName": "Startpage",
-					"viewlevel": 0
+					"viewlevel": 0,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"async": true,
+					"viewPath": "mccoy.com.URE2.view",
+					"controlAggregation": "pages",
+					"controlId": "URE2App"
 				},
 				"NewRun": {
 					"viewName": "NewRun",
-					"viewLevel": 0
+					"viewLevel": 1,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"async": true,
+					"viewPath": "mccoy.com.URE2.view",
+					"controlAggregation": "pages",
+					"controlId": "URE2App"
+				},
+				"dashboard": {
+					"viewName": "dashboard",
+					"viewlevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"async": true,
+					"viewPath": "mccoy.com.URE2.view",
+					"controlAggregation": "pages",
+					"controlId": "URE2App"
 				}
 			}
 		}
