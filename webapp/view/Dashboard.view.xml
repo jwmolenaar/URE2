@@ -6,16 +6,6 @@
 				<layout:VerticalLayout class="sapUiResponsiveMargin">
 					<Title titleStyle="H3" text="" class="sapUiTinyMarginBegin"/>
 					<layout:HorizontalLayout allowWrapping="true">
-						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Tile 1">
-							<TileContent>
-								<ImageContent src="sap-icon://accelerated"/>
-							</TileContent>
-						</GenericTile>
-						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Tile 2">
-							<TileContent>
-								<NumericContent visible="true" value="27"/>
-							</TileContent>
-						</GenericTile>
 						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="status" header="Status indicators" frameType="TwoByOne"
 							press="pressStatusTemp">
 							<tileContent>
@@ -23,7 +13,7 @@
 									<content>
 										<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
 											<mc:items>
-												<mc:HarveyBallMicroChartItem fraction="100" color="Error"/>
+												<mc:HarveyBallMicroChartItem id="highVoltageChart" fraction="100" color="Error"/>
 											</mc:items>
 										</mc:HarveyBallMicroChart>
 									</content>
@@ -38,6 +28,61 @@
 									</content>
 								</TileContent>
 							</tileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="fuseBox1" header="Fusebox A-B" frameType="TwoByOne">
+							<tileContent>
+								<TileContent footer="A">
+									<content>
+										<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
+											<mc:items>
+												<mc:HarveyBallMicroChartItem fraction="100" color="Good"/>
+											</mc:items>
+										</mc:HarveyBallMicroChart>
+									</content>
+								</TileContent>
+								<TileContent footer="B">
+									<content>
+										<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
+											<mc:items>
+												<mc:HarveyBallMicroChartItem fraction="100" color="Error"/>
+											</mc:items>
+										</mc:HarveyBallMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="fuseBox2" header="Fusebox C-D" frameType="TwoByOne">
+							<tileContent>
+								<TileContent footer="C">
+									<content>
+										<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
+											<mc:items>
+												<mc:HarveyBallMicroChartItem fraction="100" color="Good"/>
+											</mc:items>
+										</mc:HarveyBallMicroChart>
+									</content>
+								</TileContent>
+								<TileContent footer="D">
+									<content>
+										<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
+											<mc:items>
+												<mc:HarveyBallMicroChartItem fraction="100" color="Good"/>
+											</mc:items>
+										</mc:HarveyBallMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
+						
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Battery">
+							<TileContent>
+								<NumericContent value="78" valueColor="Good" formatterValue="true" scale="%" />
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Another tile">
+							<TileContent>
+								<ImageContent src="sap-icon://accelerated"/>
+							</TileContent>
 						</GenericTile>
 					</layout:HorizontalLayout>
 				</layout:VerticalLayout>

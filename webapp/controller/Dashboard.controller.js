@@ -16,6 +16,13 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 			} else // There is no history!				
 			// replace the current hash with page 1 (will not add an history entry)
 				this.getOwnerComponent().getRouter().navTo("home", null, true);
+		},
+		
+		pressStatusTemp: function() {
+			var ohighVoltageChart = this.getView().byId("highVoltageChart");
+			var sColor = ohighVoltageChart.getColor();
+			sColor = sColor === "Good" ? "Error" : "Good";
+			ohighVoltageChart.setColor(sColor);
 		}
 
 		/**
