@@ -97,45 +97,33 @@
 			},
 			"routes": [
 				{
-					"name": "home",
-					"pattern": "",
-					"target": "startpage"
+					"name":		"home",
+					"pattern":	"",
+					"target":	"startpage"
 				},
 				{
-					"name": "newrun",
-					"pattern": "newrun",
-					"target": "NewRun"
+					"name":		"newrun",
+					"pattern":	"newrun",
+					"target":	"NewRun"
 				},
 				{
-					"name": "dashboard",
-					"pattern": "dashboard",
-					"target": "Dashboard"
+					"name":		"dashboard",
+					"pattern":	"dashboard",
+					"target":	"Dashboard"
 				}
 			],
 			"targets": {
 				"startpage": {
-					"viewName": "Startpage",
-					"viewlevel": 0,
-					"routerClass": "sap.m.routing.Router",
-					"viewType": "XML",
-					"async": true,
-					"viewPath": "mccoy.com.URE2.view",
-					"controlAggregation": "pages",
-					"controlId": "URE2App"
+					"viewName":		"Startpage",
+					"viewlevel":	0
 				},
 				"NewRun": {
-					"viewName": "NewRun",
-					"viewLevel": 1,
-					"routerClass": "sap.m.routing.Router",
-					"viewType": "XML",
-					"async": true,
-					"viewPath": "mccoy.com.URE2.view",
-					"controlAggregation": "pages",
-					"controlId": "URE2App"
+					"viewName":		"NewRun",
+					"viewLevel":	1
 				},
 				"Dashboard": {
-					"viewType": "XML",
-					"viewName": "Dashboard"
+					"viewType":		"XML",
+					"viewName":		"Dashboard"
 				}
 			}
 		}

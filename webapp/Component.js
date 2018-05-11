@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
-	"sap/ui/Device",
+//	"sap/ui/Device",
 	"mccoy/com/URE2/model/models"
-], function(UIComponent, Device, models) {
+//], function(UIComponent, Device, models) {
+], function(UIComponent, models) {
 	"use strict";
 
 	return UIComponent.extend("mccoy.com.URE2.Component", {
