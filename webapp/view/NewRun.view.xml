@@ -16,7 +16,12 @@
 							<f:formElements>
 								<f:FormElement label="{i18n>autonomous}">
 									<f:fields>
-										<Switch type="AcceptReject" state="true" change="onCarTypeRBChange"/>
+										<Switch type="AcceptReject" state="false" change="onCarTypeRBChange"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>raceDescription}">
+									<f:fields>
+										<Input id="raceDesc" value="{/RACE_DESCRIPTION}"/>
 									</f:fields>
 								</f:FormElement>
 							</f:formElements>
@@ -25,7 +30,7 @@
 							<f:formElements>
 								<f:FormElement label="{i18n>weatherCond}">
 									<f:fields>
-										<Select id="weathercond" selectedKey="{newRunForm>/Weathercond}">
+										<Select id="weathercond" selectedKey="{/WEATHER}">
 											<items>
 												<core:Item text="" key=""/>
 												<core:Item text="Good" key="Good"/>
@@ -36,7 +41,21 @@
 								</f:FormElement>
 								<f:FormElement label="{i18n>temperature}">
 									<f:fields>
-										<Select id="temperature" selectedKey="{newRunForm>/Temperature}"></Select>
+										<Select id="temperature" selectedKey="{/TEMPERATURE}">
+											<items>
+												<core:Item text=""		key=""/>
+												<core:Item text="-5"	key="-5"/>
+												<core:Item text="0" 	key="0"/>
+												<core:Item text="5" 	key="5"/>
+												<core:Item text="10"	key="10"/>
+												<core:Item text="15"	key="15"/>
+												<core:Item text="20"	key="20"/>
+												<core:Item text="25"	key="25"/>
+												<core:Item text="30"	key="30"/>
+												<core:Item text="35"	key="35"/>
+												<core:Item text="40"	key="40"/>
+											</items>
+										</Select>
 									</f:fields>
 								</f:FormElement>
 							</f:formElements>
@@ -45,17 +64,26 @@
 							<f:formElements>
 								<f:FormElement label="{i18n>testType}">
 									<f:fields>
-										<Select id="testtype" selectedKey="{newRunForm>/Testtype}"></Select>
+										<Select id="testtype" selectedKey="{/RACE_TYPE}">
+											<items>
+												<core:Item text="" key=""/>
+												<core:Item text="Endurance"		key="Endurance"/>
+												<core:Item text="Skidpad"		key="Skidpad"/>
+												<core:Item text="Acceleration" 	key="Acceleration"/>
+												<core:Item text="Autocross" 	key="Autocross"/>
+												<core:Item text="Other"	 		key="Other"/>
+											</items>
+										</Select>
 									</f:fields>
 								</f:FormElement>
 								<f:FormElement label="{i18n>circuit}">
 									<f:fields>
-										<Input id="circuit" value="{newRunForm>/Circuit}"/>
+										<Input id="circuit" value="{/CIRCUIT}"/>
 									</f:fields>
 								</f:FormElement>
 								<f:FormElement label="{i18n>notes}">
 									<f:fields>
-										<TextArea id="notes" value="{newRunForm>/Notes}" width="" rows="2" growing="true" growingMaxLines="5"/>
+										<TextArea id="notes" value="{/NOTES}" width="" rows="2" growing="true" growingMaxLines="5"/>
 										</f:fields>
 									</f:FormElement>
 								</f:formElements>
