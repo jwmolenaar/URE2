@@ -10,7 +10,7 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "servicecatalog.connectivityComponent",
+			"id": "servicecatalog.connectivityComponentForManifest",
 			"version": "0.0.0"
 		},
 		"dataSources": {
@@ -20,6 +20,14 @@
 				"settings": {
 					"odataVersion": "2.0",
 					"localUri": "localService/metadata.xml"
+				}
+			},
+			"Overview.xsodata": {
+				"uri": "/UreRaceData/OData/UreRaceData/OData/Overview.xsodata/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/Overview.xsodata/metadata.xml"
 				}
 			}
 		}
@@ -77,6 +85,17 @@
 				},
 				"dataSource": "UreMetadata.xsodata",
 				"preload": true
+			},
+			"OverviewDashboard": {
+				"uri": "/UreRaceData/OData/UreRaceData/OData/Overview.xsodata/",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "Overview.xsodata",
+				"preload": true
 			}
 		},
 		"resources": {
@@ -97,33 +116,33 @@
 			},
 			"routes": [
 				{
-					"name":		"home",
-					"pattern":	"",
-					"target":	"startpage"
+					"name": "home",
+					"pattern": "",
+					"target": "startpage"
 				},
 				{
-					"name":		"newrun",
-					"pattern":	"newrun",
-					"target":	"NewRun"
+					"name": "newrun",
+					"pattern": "newrun",
+					"target": "NewRun"
 				},
 				{
-					"name":		"dashboard",
-					"pattern":	"dashboard",
-					"target":	"Dashboard"
+					"name": "dashboard",
+					"pattern": "dashboard",
+					"target": "Dashboard"
 				}
 			],
 			"targets": {
 				"startpage": {
-					"viewName":		"Startpage",
-					"viewlevel":	0
+					"viewName": "Startpage",
+					"viewlevel": 0
 				},
 				"NewRun": {
-					"viewName":		"NewRun",
-					"viewLevel":	1
+					"viewName": "NewRun",
+					"viewLevel": 1
 				},
 				"Dashboard": {
-					"viewName":		"Dashboard",
-					"viewLevel":	1
+					"viewName": "Dashboard",
+					"viewLevel": 1
 				}
 			}
 		}

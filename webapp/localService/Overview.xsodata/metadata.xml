@@ -1,0 +1,103 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="UreRaceData.OData.Overview">
+            <EntityType Name="OVERVIEWType">
+                <Key>
+                    <PropertyRef Name="RACE_ID"/>
+                    <PropertyRef Name="RUN_ID"/>
+                </Key>
+                <Property Name="RACE_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="RUN_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="RACE_START_TIME" Type="Edm.DateTime"/>
+                <Property Name="RACE_END_TIME" Type="Edm.DateTime"/>
+                <Property Name="SENSOR_TIMESTAMP" Type="Edm.DateTime"/>
+                <Property Name="TORQUE_FL" Type="Edm.Double"/>
+                <Property Name="TORQUE_FR" Type="Edm.Double"/>
+                <Property Name="TORQUE_RL" Type="Edm.Double"/>
+                <Property Name="TORQUE_RR" Type="Edm.Double"/>
+                <Property Name="BRAKE" Type="Edm.Int32"/>
+                <Property Name="THROTTLE" Type="Edm.Int32"/>
+                <Property Name="STEERING" Type="Edm.Double"/>
+                <Property Name="ACCELERATION_X" Type="Edm.Double"/>
+                <Property Name="ACCELERATION_Y" Type="Edm.Double"/>
+                <Property Name="ACCELERATION_Z" Type="Edm.Double"/>
+                <Property Name="TRAVEL_FL" Type="Edm.Double"/>
+                <Property Name="TRAVEL_FR" Type="Edm.Double"/>
+                <Property Name="TRAVEL_RL" Type="Edm.Double"/>
+                <Property Name="TRAVEL_RR" Type="Edm.Double"/>
+                <Property Name="DRS_BUTTON" Type="Edm.Int32"/>
+                <Property Name="SIX_WAY_SETTING" Type="Edm.Int32"/>
+                <Property Name="PUSH1" Type="Edm.Int32"/>
+                <Property Name="ROTARY_SETTING2" Type="Edm.Int32"/>
+                <Property Name="ROTARY_SETTING3" Type="Edm.Int32"/>
+                <Property Name="DRIVE_ENABLE" Type="Edm.Int32"/>
+                <Property Name="WATER_TEMP1" Type="Edm.Int32"/>
+                <Property Name="WATER_TEMP2" Type="Edm.Int32"/>
+                <Property Name="BATTERY_CURRENT" Type="Edm.Int32"/>
+                <Property Name="BATTERY_VOLTAGE" Type="Edm.Int32"/>
+                <Property Name="POWER" Type="Edm.Int32"/>
+                <Property Name="HV_ENABLE" Type="Edm.Int32"/>
+                <Property Name="STATE_OF_CHARGE" Type="Edm.Int32"/>
+                <Property Name="MAX_TEMP_BUCKET1" Type="Edm.Int32"/>
+                <Property Name="MAX_TEMP_BUCKET2" Type="Edm.Int32"/>
+                <Property Name="MAX_TEMP_BUCKET3" Type="Edm.Int32"/>
+                <Property Name="MAX_TEMP_BUCKET4" Type="Edm.Int32"/>
+                <Property Name="MAX_TEMP_BUCKET5" Type="Edm.Int32"/>
+                <Property Name="MAX_TEMP_BUCKET6" Type="Edm.Int32"/>
+                <Property Name="MIN_CELL_VOLT" Type="Edm.Double"/>
+                <Property Name="MAX_CELL_VOLT" Type="Edm.Double"/>
+                <Property Name="MIN_CELL_VOLT_NUM" Type="Edm.Double"/>
+                <Property Name="MAX_CELL_VOLT_NUM" Type="Edm.Double"/>
+                <Property Name="INV_FL_PAI_TEMP" Type="Edm.Int32"/>
+                <Property Name="INV_FL_MOTER_TEMP_NTC1" Type="Edm.Int32"/>
+                <Property Name="INV_FL_MOTER_TEMP_NTC2" Type="Edm.Int32"/>
+                <Property Name="INV_FL_MOTER_TEMP_ACTIVE" Type="Edm.Int32"/>
+                <Property Name="INV_FL_MECH_ANG_VELOLITY" Type="Edm.Double"/>
+                <Property Name="INV_FR_PAI_TEMP" Type="Edm.Int32"/>
+                <Property Name="INV_FR_MOTER_TEMP_NTC1" Type="Edm.Int32"/>
+                <Property Name="INV_FR_MOTER_TEMP_NTC2" Type="Edm.Int32"/>
+                <Property Name="INV_FR_MOTER_TEMP_ACTIVE" Type="Edm.Int32"/>
+                <Property Name="INV_FR_MECH_ANG_VELOLITY" Type="Edm.Double"/>
+                <Property Name="INV_RL_PAI_TEMP" Type="Edm.Int32"/>
+                <Property Name="INV_RL_MOTER_TEMP_NTC1" Type="Edm.Int32"/>
+                <Property Name="INV_RL_MOTER_TEMP_NTC2" Type="Edm.Int32"/>
+                <Property Name="INV_RL_MOTER_TEMP_ACTIVE" Type="Edm.Int32"/>
+                <Property Name="INV_RL_MECH_ANG_VELOLITY" Type="Edm.Double"/>
+                <Property Name="INV_RR_PAI_TEMP" Type="Edm.Int32"/>
+                <Property Name="INV_RR_MOTER_TEMP_NTC1" Type="Edm.Int32"/>
+                <Property Name="INV_RR_MOTER_TEMP_NTC2" Type="Edm.Int32"/>
+                <Property Name="INV_RR_MOTER_TEMP_ACTIVE" Type="Edm.Int32"/>
+                <Property Name="INV_RR_MECH_ANG_VELOLITY" Type="Edm.Double"/>
+                <Property Name="YAW_RATE" Type="Edm.Double"/>
+                <Property Name="YAW_RATE_UOM" Type="Edm.String" MaxLength="5"/>
+                <Property Name="STEERING_UOM" Type="Edm.String" MaxLength="5"/>
+                <Property Name="TRAVEL_UOM" Type="Edm.String" MaxLength="5"/>
+                <Property Name="TRAVEL_TRUE" Type="Edm.Double"/>
+                <Property Name="TRAVEL_TRUE_UOM" Type="Edm.String" MaxLength="4"/>
+                <Property Name="MAX_TEMP_BUCKET_HIGHEST" Type="Edm.Int32"/>
+                <Property Name="MAX_TEMP_BUCKET_FIXED" Type="Edm.Int32"/>
+                <Property Name="TORQUE_UOM" Type="Edm.String" MaxLength="2"/>
+                <Property Name="DRS" Type="Edm.Int32"/>
+                <Property Name="WHEEL_SLIP_FL" Type="Edm.Double"/>
+                <Property Name="WHEEL_SLIP_FR" Type="Edm.Double"/>
+                <Property Name="WHEEL_SLIP_RL" Type="Edm.Double"/>
+                <Property Name="WHEEL_SLIP_RR" Type="Edm.Double"/>
+                <Property Name="WHEEL_SLIP_UOM" Type="Edm.String" MaxLength="5"/>
+                <Property Name="LAT_DEGREE" Type="Edm.Double"/>
+                <Property Name="LON_DEGREE" Type="Edm.Double"/>
+                <Property Name="LAT_MIN" Type="Edm.Double"/>
+                <Property Name="LON_MIN" Type="Edm.Double"/>
+                <Property Name="TRAVEL_AVR" Type="Edm.Double"/>
+                <Property Name="FORMATTED_TIME" Type="Edm.Time"/>
+            </EntityType>
+            <EntityContainer Name="Overview" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="OVERVIEW" EntityType="UreRaceData.OData.Overview.OVERVIEWType"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
