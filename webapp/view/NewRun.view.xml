@@ -1,69 +1,78 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns="sap.m"
-	controllerName="mccoy.com.URE2.controller.NewRun" xmlns:html="http://www.w3.org/1999/xhtml">
-	<App>
-		<pages>
-			<Page title="{i18n>pageNewRun}" showNavButton="true" navButtonPress="onBack">
-				<content>
-					<VBox class="sapUiSmallMargin">
-						<f:Form id="newRunForm" editable="true">
-							<f:layout>
-								<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4"
-									emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
-							</f:layout>
-							<f:formContainers>
-								<f:FormContainer title="Car">
-									<f:formElements>
-										<f:FormElement label="{i18n>autonomous}">
-											<f:fields>
-												<Switch type="AcceptReject" state="true" change="onCarTypeRBChange"/>
-											</f:fields>
-										</f:FormElement>
-									</f:formElements>
-								</f:FormContainer>
-								<f:FormContainer title="Weather">
-									<f:formElements>
-										<f:FormElement label="{i18n>weatherCond}">
-											<f:fields>
-												<Select id="weathercond" selectedKey="{Weathercond}">
-													<items>
-														<core:Item text="" key=""/>
-														<core:Item text="Good" key="Good"/>
-														<core:Item text="Bad" key="Bad"/>
-													</items>
-												</Select>
-											</f:fields>
-										</f:FormElement>
-										<f:FormElement label="{i18n>temperature}">
-											<f:fields>
-												<Select id="temperature" selectedKey="{Temperature}"></Select>
-											</f:fields>
-										</f:FormElement>
-									</f:formElements>
-								</f:FormContainer>
-								<f:FormContainer title="Test/Race">
-									<f:formElements>
-										<f:FormElement label="{i18n>testType}">
-											<f:fields>
-												<Select id="testtype" selectedKey="{Testtype}"></Select>
-											</f:fields>
-										</f:FormElement>
-										<f:FormElement label="{i18n>circuit}">
-											<f:fields>
-												<Input id="circuit" value="{Circuit}"/>
-											</f:fields>
-										</f:FormElement>
-										<f:FormElement label="{i18n>notes}">
-											<f:fields>
-												<TextArea id="notes" value="{Notes}" width="" rows="2" growing="true" growingMaxLines="5"/>
-												</f:fields>
-											</f:FormElement>
-										</f:formElements>
-									</f:FormContainer>
-								</f:formContainers>
-							</f:Form>
-						</VBox>
-					</content>
-				</Page>
-			</pages>
-		</App>
+<mvc:View	xmlns:core="sap.ui.core"
+			xmlns:mvc="sap.ui.core.mvc"
+			xmlns:f="sap.ui.layout.form"
+			xmlns="sap.m"
+			controllerName="mccoy.com.URE2.controller.NewRun">
+	<Page title="{i18n>pageNewRun}" showNavButton="true" navButtonPress="onBack">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:Form id="newRunForm" editable="true">
+					<f:layout>
+						<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4"
+							emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer title="Car">
+							<f:formElements>
+								<f:FormElement label="{i18n>autonomous}">
+									<f:fields>
+										<Switch type="AcceptReject" state="true" change="onCarTypeRBChange"/>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						<f:FormContainer title="Weather">
+							<f:formElements>
+								<f:FormElement label="{i18n>weatherCond}">
+									<f:fields>
+										<Select id="weathercond" selectedKey="{newRunForm>/Weathercond}">
+											<items>
+												<core:Item text="" key=""/>
+												<core:Item text="Good" key="Good"/>
+												<core:Item text="Bad" key="Bad"/>
+											</items>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>temperature}">
+									<f:fields>
+										<Select id="temperature" selectedKey="{newRunForm>/Temperature}"></Select>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						<f:FormContainer title="Test/Race">
+							<f:formElements>
+								<f:FormElement label="{i18n>testType}">
+									<f:fields>
+										<Select id="testtype" selectedKey="{newRunForm>/Testtype}"></Select>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>circuit}">
+									<f:fields>
+										<Input id="circuit" value="{newRunForm>/Circuit}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>notes}">
+									<f:fields>
+										<TextArea id="notes" value="{newRunForm>/Notes}" width="" rows="2" growing="true" growingMaxLines="5"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</VBox>
+			</content>
+			
+			<footer>
+				<OverflowToolbar 	id="otbFooter">
+					<ToolbarSpacer/>
+					<OverflowToolbarButton 	text="Create Run"
+											icon="sap-icon://add"
+											press="onCreatePress"/>
+				</OverflowToolbar>
+			</footer>
+			
+		</Page>
 	</mvc:View>
