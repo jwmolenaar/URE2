@@ -6,10 +6,10 @@
 				<layout:VerticalLayout class="sapUiResponsiveMargin">
 					<Title titleStyle="H3" text="" class="sapUiTinyMarginBegin"/>
 					<layout:HorizontalLayout allowWrapping="true">
-						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="status" header="Status indicators" frameType="TwoByOne"
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="status" header="{i18n>tileHeaderStatusiIndicators}" frameType="TwoByOne"
 							press="pressStatusTemp">
 							<tileContent>
-								<TileContent footer="High Voltage (HV)">
+								<TileContent footer="{i18n>tileFooterHighVoltage}">
 									<content>
 										<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
 											<mc:items>
@@ -18,7 +18,7 @@
 										</mc:HarveyBallMicroChart>
 									</content>
 								</TileContent>
-								<TileContent footer="Drive">
+								<TileContent footer="{i18n>Drive}">
 									<content>
 										<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
 											<mc:items>
@@ -29,7 +29,7 @@
 								</TileContent>
 							</tileContent>
 						</GenericTile>
-						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="fuseBox1" header="Fusebox A-B" frameType="TwoByOne">
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="fuseBox1" header="{i18n>tileHeaderFuseboxAB}" frameType="TwoByOne">
 							<tileContent>
 								<TileContent footer="A">
 									<content>
@@ -51,7 +51,7 @@
 								</TileContent>
 							</tileContent>
 						</GenericTile>
-						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="fuseBox2" header="Fusebox C-D" frameType="TwoByOne">
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" id="fuseBox2" header="{i18n>tileHeaderFuseboxAB}" frameType="TwoByOne">
 							<tileContent>
 								<TileContent footer="C">
 									<content>
@@ -73,15 +73,33 @@
 								</TileContent>
 							</tileContent>
 						</GenericTile>
-						
-						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Battery">
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBattery}" subheader="{i18n>tileSubHeaderPercentage}">
 							<TileContent>
-								<NumericContent value="78" valueColor="Good" formatterValue="true" scale="%" />
+								<NumericContent value="78" valueColor="Good" scale="%"/>
 							</TileContent>
 						</GenericTile>
-						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Another tile">
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBatTempGrp}"
+							subheader="{i18n>tileSubHeaderMostExtValue}">
 							<TileContent>
-								<ImageContent src="sap-icon://accelerated"/>
+								<NumericContent value="27" valueColor="Good" scale="°C"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderMotTempGrp}"
+							subheader="{i18n>tileSubHeaderMostExtValue}">
+							<TileContent>
+								<NumericContent value="71" valueColor="Error" scale="°C"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderInvTempGrp}"
+							subheader="{i18n>tileSubHeaderMostExtValue}">
+							<TileContent>
+								<NumericContent value="34" valueColor="Critical" scale="°C"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBanTempGrp}"
+							subheader="{i18n>tileSubHeaderMostExtValue}">
+							<TileContent>
+								<NumericContent value="65" valueColor="Critical" scale="°C"/>
 							</TileContent>
 						</GenericTile>
 					</layout:HorizontalLayout>
