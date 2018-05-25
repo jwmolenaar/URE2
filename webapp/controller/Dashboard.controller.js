@@ -23,6 +23,23 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 			var sColor = ohighVoltageChart.getColor();
 			sColor = sColor === "Good" ? "Error" : "Good";
 			ohighVoltageChart.setColor(sColor);
+		},
+		
+		pressRefreshDashboard: function() {
+			
+			//Get data for dashboard.
+			var oUreMetadata = this.getOwnerComponent().getModel("OverviewDashboard");
+
+			/*var sPath = "/URE_METADATA/$count";
+			oUreMetadata.read(sPath, {
+				success: function(oData, response) {
+					oViewModel.setProperty("/tileAllRunsNumValue", oData);
+					oViewModel.setProperty("/tileAllRunsNumVisable", true);
+				},
+				error: function(oError) {
+					var oError = oError;
+				}
+			});*/
 		}
 
 		/**
