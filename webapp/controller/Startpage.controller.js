@@ -35,7 +35,7 @@ sap.ui.define([
 					oViewModel.setProperty("/tileAllRunsNumVisable", true);
 				},
 				error: function(oError) {
-					var oError = oError;
+					var oNewError = oError;
 				}
 			});
 		},
