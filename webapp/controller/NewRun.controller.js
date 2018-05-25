@@ -5,7 +5,7 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 	"use strict";
 
 	return Controller.extend("mccoy.com.URE2.controller.NewRun", {
-
+	// test commit
 		onInit: function() {
 			// Local View Model used to manage data within this view
 			var oViewModel = new JSONModel({
