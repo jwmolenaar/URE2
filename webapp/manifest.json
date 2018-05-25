@@ -122,8 +122,8 @@
 					"viewLevel":	1
 				},
 				"Dashboard": {
-					"viewType":		"XML",
-					"viewName":		"Dashboard"
+					"viewName":		"Dashboard",
+					"viewLevel":	1
 				}
 			}
 		}
