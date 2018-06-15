@@ -16,7 +16,8 @@ sap.ui.define([
 			// Model used to manipulate dynamic values of tiles
 			oViewModel = new JSONModel({
 				tileAllRunsNumVisable: false,
-				tileAllRunsNumValue: 0
+				tileAllRunsNumValue: 0,
+				tileAllRunsFooter: null
 			});
 			this.getView().setModel(oViewModel, "worklistView");
 
@@ -33,9 +34,11 @@ sap.ui.define([
 				success: function(oData, response) {
 					oViewModel.setProperty("/tileAllRunsNumValue", oData);
 					oViewModel.setProperty("/tileAllRunsNumVisable", true);
+					oViewModel.setProperty("/tileAllRunsFooter", "");
 				},
 				error: function(oError) {
 					var oNewError = oError;
+					oViewModel.setProperty("/tileAllRunsFooter", "No Connection");
 				}
 			});
 		},

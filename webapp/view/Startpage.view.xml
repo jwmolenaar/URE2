@@ -22,7 +22,8 @@
 						<ImageContent src="sap-icon://accelerated"/>
 					</TileContent>
 				</GenericTile>
-				<GenericTile id="tileAllRuns" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Overzicht geregistreerde runs">
+				<GenericTile id="tileAllRuns" class="sapUiTinyMarginBegin sapUiTinyMarginTop" 
+							header="Overzicht geregistreerde runs">
 					<TileContent>
 						<NumericContent visible="{worklistView>/tileAllRunsNumVisable}" value="{worklistView>/tileAllRunsNumValue}"/>
 					</TileContent>
