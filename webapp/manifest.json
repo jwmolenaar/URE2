@@ -127,7 +127,7 @@
 				},
 				{
 					"name": "dashboard",
-					"pattern": "dashboard",
+					"pattern": "dashboard/{raceID}",
 					"target": "Dashboard"
 				}
 			],

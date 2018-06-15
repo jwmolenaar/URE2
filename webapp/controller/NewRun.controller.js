@@ -5,14 +5,47 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 	"use strict";
 
 	return Controller.extend("mccoy.com.URE2.controller.NewRun", {
+		
 		onInit: function() {
+		//*******************************************************************************
+		//*******************************************************************************
 			// Local View Model used to manage data within this view
+			// var oViewModel = new JSONModel({
+			// 	"RACE_ID": null,
+			// 	"RUN_ID": 1,
+			// 	"CIRCUIT": null,
+			// 	"TEMPERATURE": null,
+			// 	"RACE_DESCRIPTION": "test",
+			// 	"START_TIME": null,
+			// 	"END_TIME": null,
+			// 	"RACE_TYPE": null,
+			// 	"WEATHER": null,
+			// 	"NOTES": null,
+			// 	"CAR_ID": null,
+			// 	"CAR_NOTES": null,
+			// 	"NAME_DRIVER": null,
+			// 	"LENGTH_DRIVER": null,
+			// 	"WEIGHT_DRIVER": null,
+			// 	"DRIVER_NOTES": null,
+			// 	"DISTANCE": null
+			// });
+			// this.getView().setModel(oViewModel);
+		
+			var oRouter = this.getOwnerComponent().getRouter();
+			oRouter.getRoute("newrun").attachMatched(this._onRouteMatched, this);			
+		},
+		
+		_onRouteMatched : function (oEvent)  {
+		//*******************************************************************************
+		// Event Handler for navigation to newRun view
+		// Clear the newRun model
+		//*******************************************************************************
 			var oViewModel = new JSONModel({
 				"RACE_ID": null,
 				"RUN_ID": 1,
 				"CIRCUIT": null,
 				"TEMPERATURE": null,
-				"RACE_DESCRIPTION": "test",
+				"RACE_DESCRIPTION": "",
 				"START_TIME": null,
 				"END_TIME": null,
 				"RACE_TYPE": null,
@@ -30,6 +63,8 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 		},
 
 		onBack : function () {
+		//*******************************************************************************
+		//*******************************************************************************
 			//The history contains a previous entry
 			if (History.getInstance().getPreviousHash() !== undefined)
 				window.history.go(-1);
@@ -38,7 +73,7 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 		},
 		
 		onCarTypeRBChange : function() {
-			var newRunModel = this.getView().getModel("newRunForm");
+//			var newRunModel = this.getView().getModel("newRunForm");
 		},
 		
 		// _getLastRaceID : function() {
@@ -59,6 +94,8 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 		// },
 		
 		successHandler : function() {
+		//*******************************************************************************
+		//*******************************************************************************
 		},
 		
 		_createNewRun : function(oView, oRouter) {
@@ -71,24 +108,29 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 			var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
 			
 			oUreMetadata.read("/URE_METADATA/$count", {
+				
 				success: function(oData, response) {
 					var newRaceID = parseInt(oData) + 1;
 					oFormData.setProperty("/RACE_ID", newRaceID);
+					
+					oFormData.setProperty("/START_TIME", new Date());
 					oUreMetadata.create("/URE_METADATA", oFormData.getProperty("/"), {
-						success: function() { oRouter.navTo("dashboard", null, true); },	// Go to the Dashboard
+						success: function() { // Go to the Dashboard
+							oRouter.navTo("dashboard", { raceID : newRaceID } );
+						},
+						
 						error: function() {
-								// var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
-								MessageBox.error( "error", {	
-										actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-										styleClass: bCompact ? "sapUiSizeCompact" : "",
-										onClose: function(sAction) { oRouter.navTo("home", null, true); }
-									}
-								);
+							MessageBox.error( "error", {	
+									actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+									styleClass: bCompact ? "sapUiSizeCompact" : "",
+									onClose: function(sAction) { oRouter.navTo("home", null, true); }
+								}
+							);
 						}
 					});
 				},
+				
 				error: function(oError) {
-					// var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
 					var msgText = "Error " + oError.message;
 					MessageBox.error( msgText, {
 							actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
@@ -101,8 +143,8 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 		},
 		
 		onCreatePress : function() {
-			var newRunModel = this.getView().getModel("newRunForm");
-			// Gather data from local model and trigger backend registration
+		//*******************************************************************************
+		//*******************************************************************************
 			var oRouter = this.getOwnerComponent().getRouter();
 			this._createNewRun(this.getView(), oRouter);
 		}
