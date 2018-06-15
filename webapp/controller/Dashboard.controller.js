@@ -16,7 +16,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			});
 			this.getView().setModel(oViewModel, "viewModel");
 			
-			
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("dashboard").attachMatched(this._onRouteMatchedDashboard, this);
 
