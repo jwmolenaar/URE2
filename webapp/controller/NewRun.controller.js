@@ -5,7 +5,6 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 	"use strict";
 
 	return Controller.extend("mccoy.com.URE2.controller.NewRun", {
-	// test commit
 		onInit: function() {
 			// Local View Model used to manage data within this view
 			var oViewModel = new JSONModel({
@@ -42,126 +41,59 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 			var newRunModel = this.getView().getModel("newRunForm");
 		},
 		
-	_getLastRunID : function() {
-		//*******************************************************************************
-		// Identify the current highest runID and allocate the next available runID
-		//*******************************************************************************
-			var sPath = "/URE_METADATA/$count";
-			var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
-
-			oUreMetadata.read(sPath, {
-				success: function(oData, response) {
-					var newRaceID = parseInt(oData);
-					return newRaceID;
-				},
-				error: function(oError) {
-					return oError;
-					// var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
-					// var msgText = "Error " + oError.message;
-					// MessageBox.error( msgText,
-					// 	{	actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-					// 		styleClass: bCompact ? "sapUiSizeCompact" : "",
-					// 		onClose: function(sAction) {
-					// 			// sap.ui.core.UIComponent.getRouterFor(oView).navTo("page1", null, true);
-					// 		}
-					// 	}
-					// );
-				}
-			});
-			
-		},
+		// _getLastRaceID : function() {
+		// //*******************************************************************************
+		// // Identify the current highest runID and allocate the next available runID
+		// //*******************************************************************************
+		// 	var sPath = "/URE_METADATA/$count";
+		// 	var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
+		// 	oUreMetadata.read(sPath, {
+		// 		success: function(oData, response) {
+		// 			var newRaceID = parseInt(oData);
+		// 			return newRaceID;
+		// 		},
+		// 		error: function(oError) {
+		// 			return oError;
+		// 		}
+		// 	});
+		// },
 		
 		successHandler : function() {
-			
 		},
 		
-		_createNewRun : function(oView) {
+		_createNewRun : function(oView, oRouter) {
 		//*******************************************************************************
 		// Function will transfer data collected into the local view model towards the backend
 		//*******************************************************************************
-		
-			// // State Constants
-			// var STATE_START = 1;
-			// var STATE_GET_LAST_RUNID = 2;
-			// var STATE_NEXT_RUNID = 3;
-			// var STATE_END = 99;
-			
-			// var stateID = STATE_START;
-			// do {
-			// 	switch (stateID) {
-			// 		case STATE_START :
-			// 			stateID = STATE_GET_LAST_RUNID;
-			// 			break;
-						
-			// 		case STATE_GET_LAST_RUNID :
-			// 			var lastRunID;
-
-			// 			var sPath = "/URE_METADATA/$count";
-			// 			var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
-			// 			oUreMetadata.read(sPath, {
-			// 				success: function(oData, response) {
-			// 					var lastRunID = parseInt(oData);
-			// 				},
-			// 				error: function(oError) {
-			// 					// return oError;
-			// 				}
-			// 			});
-
-			// 			stateID = STATE_NEXT_RUNID;
-			// 			break;
-						
-			// 		case STATE_NEXT_RUNID :
-			// 			if (typeof lastRunID !== 'undefined' && !lastRunID) {
-			// 				var nextRunID = lastRunID++;
-			// 				stateID = STATE_END;
-			// 			}
-			// 			break;
-			// 	}
-			// } while (stateID!=STATE_END);
-			
 			//Get number of runs to increment raceID
 			var oFormData   = this.getView().getModel();
 			var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
+			var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
 			
 			oUreMetadata.read("/URE_METADATA/$count", {
 				success: function(oData, response) {
 					var newRaceID = parseInt(oData) + 1;
 					oFormData.setProperty("/RACE_ID", newRaceID);
 					oUreMetadata.create("/URE_METADATA", oFormData.getProperty("/"), {
-						success: function() {
-							var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
-							MessageBox.error( "success",
-								{	actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-									styleClass: bCompact ? "sapUiSizeCompact" : "",
-									onClose: function(sAction) {
-										// sap.ui.core.UIComponent.getRouterFor(oView).navTo("page1", null, true);
-									}
-								}
-							);
-						},
+						success: function() { oRouter.navTo("dashboard", null, true); },	// Go to the Dashboard
 						error: function() {
-								var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
-								MessageBox.error( "error",
-									{	actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+								// var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
+								MessageBox.error( "error", {	
+										actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
 										styleClass: bCompact ? "sapUiSizeCompact" : "",
-										onClose: function(sAction) {
-											// sap.ui.core.UIComponent.getRouterFor(oView).navTo("page1", null, true);
-										}
+										onClose: function(sAction) { oRouter.navTo("home", null, true); }
 									}
 								);
 						}
-				}
-			);
+					});
 				},
 				error: function(oError) {
-					var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
+					// var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
 					var msgText = "Error " + oError.message;
-					MessageBox.error( msgText,
-						{	actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+					MessageBox.error( msgText, {
+							actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
 							styleClass: bCompact ? "sapUiSizeCompact" : "",
-							onClose: function(sAction) {
-								// sap.ui.core.UIComponent.getRouterFor(oView).navTo("page1", null, true);
-							}
+							onClose: function(sAction) { oRouter.navTo("home", null, true);	}
 						}
 					);
 				}
@@ -171,10 +103,10 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 		onCreatePress : function() {
 			var newRunModel = this.getView().getModel("newRunForm");
 			// Gather data from local model and trigger backend registration
-			this._createNewRun(this.getView());
+			var oRouter = this.getOwnerComponent().getRouter();
+			this._createNewRun(this.getView(), oRouter);
 		}
 
 	});
 	
-
 });
