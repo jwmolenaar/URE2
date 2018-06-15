@@ -38,7 +38,7 @@
 												<mc:items>
 													<mc:HarveyBallMicroChartItem fraction="100" color="Good"/>
 												</mc:items>
-											</mc:HarveyBallMicroChart>
+											</mc:HarveyBallMicroChart> 
 										</content>
 									</TileContent>
 									<TileContent footer="B">

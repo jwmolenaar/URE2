@@ -28,18 +28,31 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 		pressRefreshDashboard: function() {
 			
 			//Get data for dashboard.
-			var oUreMetadata = this.getOwnerComponent().getModel("OverviewDashboard");
+			var oDashboardModel = this.getOwnerComponent().getModel("OverviewDashboard");
 
-			/*var sPath = "/URE_METADATA/$count";
-			oUreMetadata.read(sPath, {
+			var sPath = "/OVERVIEW";
+			
+			var aFilters = [];
+			var filterByRaceId = new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.EQ, "246");  
+    		aFilters.push(filterByRaceId);
+    		var filterByRunId = new sap.ui.model.Filter("RUN_ID", sap.ui.model.FilterOperator.EQ, "1");  
+    		aFilters.push(filterByRunId);
+    		
+    		var aSorters = [];
+    		var sortByTimestamp = new sap.ui.model.Sorter("SENSOR_TIMESTAMP", true);
+    		aSorters.push(sortByTimestamp);
+			
+			oDashboardModel.read(sPath, {
+				urlParameters:{"$top" : "1"},
+				filters: aFilters,
+				sorters: aSorters,
 				success: function(oData, response) {
-					oViewModel.setProperty("/tileAllRunsNumValue", oData);
-					oViewModel.setProperty("/tileAllRunsNumVisable", true);
+					var newData = oData;
 				},
 				error: function(oError) {
 					var oError = oError;
 				}
-			});*/
+			});
 		}
 
 		/**

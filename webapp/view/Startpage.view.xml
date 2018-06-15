@@ -1,65 +1,46 @@
-<mvc:View
-	controllerName="mccoy.com.URE2.controller.Startpage"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m"
-	xmlns:layout="sap.ui.layout"
+<mvc:View controllerName="mccoy.com.URE2.controller.Startpage" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout"
 	xmlns:microchart="sap.suite.ui.microchart">
 	<Page title="{i18n>startpageTitle}">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Image src="images/logo_URE.png" width="2.3em"/>
+				</contentLeft>
+				<contentMiddle>
+					<Title text="{i18n>startpageTitle}"></Title>
+				</contentMiddle>
+				<contentRight>
+					<Image src="images/logo_McCoy.png" width="5em"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
 		<layout:VerticalLayout class="sapUiResponsiveMargin">
-			<Title
-				titleStyle="H3"
-				text="Direct naar"
-				class="sapUiTinyMarginBegin" />
+			<Title titleStyle="H3" text="Direct naar" class="sapUiTinyMarginBegin"/>
 			<layout:HorizontalLayout allowWrapping="true">
-				<GenericTile
-					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="{i18n>tileNewRun}"
-					press="onPressNewRun">
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileNewRun}" press="onPressNewRun">
 					<TileContent>
-						<ImageContent src="sap-icon://accelerated" />
+						<ImageContent src="sap-icon://accelerated"/>
 					</TileContent>
 				</GenericTile>
-				<GenericTile
-					id="tileAllRuns"
-					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="Overzicht geregistreerde runs">
+				<GenericTile id="tileAllRuns" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Overzicht geregistreerde runs">
 					<TileContent>
-						<NumericContent
-							visible="{worklistView>/tileAllRunsNumVisable}"
-							value="{worklistView>/tileAllRunsNumValue}" />
+						<NumericContent visible="{worklistView>/tileAllRunsNumVisable}" value="{worklistView>/tileAllRunsNumValue}"/>
 					</TileContent>
 				</GenericTile>
 			</layout:HorizontalLayout>
-			<Title
-				titleStyle="H3"
-				text="Tijdelijke apps"
-				class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
+			<Title titleStyle="H3" text="Tijdelijke apps" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
 			<layout:HorizontalLayout allowWrapping="true">
-				<GenericTile
-					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="Dashboard (zonder run)"
-					subheader="Tijdelijk"
-					press="onPressDashboard">
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Dashboard (zonder run)" subheader="Tijdelijk" press="onPressDashboard">
 					<tileContent>
-						<TileContent>
-						</TileContent>
+						<TileContent></TileContent>
 					</tileContent>
 				</GenericTile>
 			</layout:HorizontalLayout>
-			<Title
-				titleStyle="H2"
-				text="{i18n>startpageLinksGroupTitle}"
-				class="sapUiTinyMarginBegin sapUiMediumMarginTop" />
+			<Title titleStyle="H2" text="{i18n>startpageLinksGroupTitle}" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
 			<layout:HorizontalLayout allowWrapping="true">
-				<GenericTile
-					header="{i18n>startpageLineTile1Title}"
-					subheader="{i18n>startpageLineTile1SubTitle}"
-					mode="LineMode"
-					class="sapUiTinyMarginBegin" />
-				<GenericTile
-					header="{i18n>startpageLineTile2Title}"
-					mode="LineMode"
-					class="sapUiTinyMarginBegin" />
+				<GenericTile header="{i18n>startpageLineTile1Title}" subheader="{i18n>startpageLineTile1SubTitle}" mode="LineMode"
+					class="sapUiTinyMarginBegin"/>
+				<GenericTile header="{i18n>startpageLineTile2Title}" mode="LineMode" class="sapUiTinyMarginBegin"/>
 			</layout:HorizontalLayout>
 		</layout:VerticalLayout>
 	</Page>
