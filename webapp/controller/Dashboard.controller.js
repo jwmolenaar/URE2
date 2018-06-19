@@ -16,6 +16,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			});
 			this.getView().setModel(oViewModel, "viewModel");
 			
+			var oDashboardModel = new sap.ui.model.json.JSONModel();
+			this.getView().setModel(oDashboardModel, "dashboardModel");
+			
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("dashboard").attachMatched(this._onRouteMatchedDashboard, this);
 
@@ -43,8 +46,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		pressRefreshDashboard: function() {
 
-			//Get data for dashboard.
-			var oDashboardModel = this.getOwnerComponent().getModel("OverviewDashboard");
+			//Get data for dashboard from oData service.
+			var oDataOverview = this.getOwnerComponent().getModel("OverviewDashboard");
 
 			var sPath = "/OVERVIEW";
 
@@ -61,14 +64,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var sortByTimestamp = new sap.ui.model.Sorter("SENSOR_TIMESTAMP", true);
 			aSorters.push(sortByTimestamp);
 
-			oDashboardModel.read(sPath, {
+			oDataOverview.read(sPath, {
 				urlParameters: {
 					"$top": "1"
 				},
 				filters: aFilters,
 				sorters: aSorters,
 				success: function(oData, response) {
-					var newData = oData;
+					var newData = oData.results[0];
+					var oDashboardModel = this.getView().getModel("dashboardModel");
+					oDashboardModel.setData(newData);
 				},
 				error: function(oError) {
 					var oError = oError;
