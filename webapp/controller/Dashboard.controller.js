@@ -93,49 +93,53 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			//*******************************************************************************
 			// Stop the run by updating the end timestamp and go back to the home view
 			//*******************************************************************************
-/*			var oView = this.getView();
+			var oController = this;
+			var oView = this.getView();
 			var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
-			var oFormData = this.getView().getModel();
 			var oRouter = this.getOwnerComponent().getRouter();
 
 			var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
 
-			var raceID = 300;
+			var oViewModel = this.getView().getModel("viewModel");
+
+			var raceID = oViewModel.getProperty("/raceID");
 			var runID = 1;
-			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
-			oRaceMetaData.setProperty(oPath + "/END_TIME", new Date());
+			var oData = {
+				    RACE_ID: raceID,
+				    RUN_ID: 1,
+				    END_TIME: ""
+				};
+			oData.END_TIME = new Date();
 
-			if (oRaceMetaData.hasPendingChanges()) {
-				oRaceMetaData.submitChanges({
-					success: function(oData) {
-						sap.m.MessageToast.show("Test opgeslagen");
-						oRouter.navTo("home", null, true);
-					},
-					error: function(oError) {
-						sap.m.MessageToast.show("Error with saving current test");
-					}
-				});
-			} else
-				sap.m.MessageToast.show("No pending changes current test")*/
+			oUreMetadata.update(oPath, oData, 
+						{	success: function() { 
+								if (oController.intervalHandle) clearInterval(oController.intervalHandle);
+								oRouter.navTo("home", null, true);
+							},
+							error: function(oResponse) {
+									MessageBox.confirm(
+										oResponse.responseText,
+										{	actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+											styleClass: bCompact ? "sapUiSizeCompact" : "",
+											onClose: function(sAction) {
+												if (this.intervalHandle) clearInterval(this.intervalHandle);
+												oRouter.navTo("home", null, true);
+											}
+										}
+									);
 
+
+								// MessageBox.error( "error", {
+								// 		actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+								// 		styleClass: bCompact ? "sapUiSizeCompact" : "",
+								// 		onClose: function(sAction) { oRouter.navTo("home", null, true); }
+								// 	}
+								// );
+						}
+			});
 		},
 
-		// oUreMetadata.setProperty("/END_TIME", new Date());
-		// oUreMetadata.update("/URE_METADATA", {
-		// 	success: function() { // Go to the Dashboard
-		// 		oRouter.navTo("home", null, true);
-		// 	},
-
-		// 	error: function() {
-		// 		MessageBox.error( "error", {	
-		// 				actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-		// 				styleClass: bCompact ? "sapUiSizeCompact" : "",
-		// 				onClose: function(sAction) { oRouter.navTo("home", null, true); }
-		// 			}
-		// 		);
-		// 	}
-		// });
 
 		_onRouteMatchedDashboard: function(oEvent) {
 			var oArgs = oEvent.getParameter("arguments");
