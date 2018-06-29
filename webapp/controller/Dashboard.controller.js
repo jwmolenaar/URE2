@@ -1,9 +1,34 @@
+<<<<<<< HEAD
 sap.ui.define([	"sap/ui/core/mvc/Controller",
 				"sap/m/MessageBox",
 				"sap/ui/core/routing/History" ], function(Controller, MessageBox, History) {
+=======
+sap.ui.define(["sap/ui/core/mvc/Controller",
+	"sap/ui/core/routing/History"
+], function(Controller, History) {
+>>>>>>> refs/heads/master
 	"use strict";
 
 	return Controller.extend("mccoy.com.URE2.controller.Dashboard", {
+
+		/**
+		 * Called when a controller is instantiated and its View controls (if available) are already created.
+		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
+		 * @memberOf mccoy.com.URE2.view.Dashboard
+		 */
+		onInit: function() {
+			var oViewModel = new sap.ui.model.json.JSONModel({
+				raceID : null
+			});
+			this.getView().setModel(oViewModel, "viewModel");
+			
+			var oDashboardModel = new sap.ui.model.json.JSONModel();
+			this.getView().setModel(oDashboardModel, "dashboardModel");
+			
+			var oRouter = this.getOwnerComponent().getRouter();
+			oRouter.getRoute("dashboard").attachMatched(this._onRouteMatchedDashboard, this);
+
+		},
 
 		onBack: function() {
 			//var oModel = this.getView().getModel();
@@ -17,37 +42,46 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 			// replace the current hash with page 1 (will not add an history entry)
 				this.getOwnerComponent().getRouter().navTo("home", null, true);
 		},
-		
+
 		pressStatusTemp: function() {
 			var ohighVoltageChart = this.getView().byId("highVoltageChart");
 			var sColor = ohighVoltageChart.getColor();
 			sColor = sColor === "Good" ? "Error" : "Good";
 			ohighVoltageChart.setColor(sColor);
 		},
-		
+
 		pressRefreshDashboard: function() {
-			
-			//Get data for dashboard.
-			var oDashboardModel = this.getOwnerComponent().getModel("OverviewDashboard");
+
+			//Get data for dashboard from oData service.
+			var oDataOverview = this.getOwnerComponent().getModel("OverviewDashboard");
 
 			var sPath = "/OVERVIEW";
-			
+
+			var oViewModel = this.getView().getModel("viewModel");
+			var sRaceID = oViewModel.getProperty("/raceID");
+
 			var aFilters = [];
-			var filterByRaceId = new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.EQ, "246");  
-    		aFilters.push(filterByRaceId);
-    		var filterByRunId = new sap.ui.model.Filter("RUN_ID", sap.ui.model.FilterOperator.EQ, "1");  
-    		aFilters.push(filterByRunId);
-    		
-    		var aSorters = [];
-    		var sortByTimestamp = new sap.ui.model.Sorter("SENSOR_TIMESTAMP", true);
-    		aSorters.push(sortByTimestamp);
+			var filterByRaceId = new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.EQ, sRaceID);
+			aFilters.push(filterByRaceId);
+			var filterByRunId = new sap.ui.model.Filter("RUN_ID", sap.ui.model.FilterOperator.EQ, "1");
+			aFilters.push(filterByRunId);
+
+			var aSorters = [];
+			var sortByTimestamp = new sap.ui.model.Sorter("SENSOR_TIMESTAMP", true);
+			aSorters.push(sortByTimestamp);
 			
-			oDashboardModel.read(sPath, {
-				urlParameters:{"$top" : "1"},
+			var that = this;
+
+			oDataOverview.read(sPath, {
+				urlParameters: {
+					"$top": "1"
+				},
 				filters: aFilters,
 				sorters: aSorters,
 				success: function(oData, response) {
-					var newData = oData;
+					var newData = oData.results[0];
+					var oDashboardModel = that.getView().getModel("dashboardModel");
+					oDashboardModel.setData(oData);
 				},
 				error: function(oError) {
 					var oError = oError;
@@ -55,6 +89,7 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 			});
 		},
 		
+<<<<<<< HEAD
 		pressStopDashboard : function() {
 		//*******************************************************************************
 		// Stop the run by updating the end timestamp and go back to the home view
@@ -104,16 +139,16 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 			// 	}
 			// });
 
+=======
+		_onRouteMatchedDashboard: function(oEvent) {
+			var oArgs = oEvent.getParameter("arguments");
+			var sRaceID = oArgs.raceID;
+			var oViewModel = this.getView().getModel("viewModel");
+			oViewModel.setData({
+				raceID: sRaceID
+			});
+>>>>>>> refs/heads/master
 		}
-
-		/**
-		 * Called when a controller is instantiated and its View controls (if available) are already created.
-		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-		 * @memberOf mccoy.com.URE2.view.Dashboard
-		 */
-		//	onInit: function() {
-		//
-		//	},
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

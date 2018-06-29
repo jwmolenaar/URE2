@@ -85,7 +85,9 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 					oFormData.setProperty("/START_TIME", new Date());
 					oUreMetadata.create("/URE_METADATA", oFormData.getProperty("/"), {
 						success: function() { // Go to the Dashboard
-							oRouter.navTo("dashboard", { raceID : newRaceID } );
+							oRouter.navTo("dashboard", { 
+								raceID : newRaceID
+							});
 						},
 						
 						error: function() {
