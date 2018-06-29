@@ -9,28 +9,6 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 		onInit: function() {
 		//*******************************************************************************
 		//*******************************************************************************
-			// Local View Model used to manage data within this view
-			// var oViewModel = new JSONModel({
-			// 	"RACE_ID": null,
-			// 	"RUN_ID": 1,
-			// 	"CIRCUIT": null,
-			// 	"TEMPERATURE": null,
-			// 	"RACE_DESCRIPTION": "test",
-			// 	"START_TIME": null,
-			// 	"END_TIME": null,
-			// 	"RACE_TYPE": null,
-			// 	"WEATHER": null,
-			// 	"NOTES": null,
-			// 	"CAR_ID": null,
-			// 	"CAR_NOTES": null,
-			// 	"NAME_DRIVER": null,
-			// 	"LENGTH_DRIVER": null,
-			// 	"WEIGHT_DRIVER": null,
-			// 	"DRIVER_NOTES": null,
-			// 	"DISTANCE": null
-			// });
-			// this.getView().setModel(oViewModel);
-		
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("newrun").attachMatched(this._onRouteMatched, this);			
 		},
@@ -72,10 +50,6 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 				this.getOwnerComponent().getRouter().navTo("home", null, true);
 		},
 		
-		onCarTypeRBChange : function() {
-//			var newRunModel = this.getView().getModel("newRunForm");
-		},
-		
 		// _getLastRaceID : function() {
 		// //*******************************************************************************
 		// // Identify the current highest runID and allocate the next available runID
@@ -92,11 +66,6 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 		// 		}
 		// 	});
 		// },
-		
-		successHandler : function() {
-		//*******************************************************************************
-		//*******************************************************************************
-		},
 		
 		_createNewRun : function(oView, oRouter) {
 		//*******************************************************************************
