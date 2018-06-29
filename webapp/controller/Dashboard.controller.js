@@ -93,16 +93,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			//*******************************************************************************
 			// Stop the run by updating the end timestamp and go back to the home view
 			//*******************************************************************************
+			var oController = this;
 			var oView = this.getView();
 			var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
-			// var oFormData = this.getView().getModel();
 			var oRouter = this.getOwnerComponent().getRouter();
 
 			var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
 
 			var oViewModel = this.getView().getModel("viewModel");
 
-			// var raceID = oViewModel.raceID;
 			var raceID = oViewModel.getProperty("/raceID");
 			var runID = 1;
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
@@ -114,14 +113,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			oData.END_TIME = new Date();
 
 			oUreMetadata.update(oPath, oData, 
-						{	success: function() { oRouter.navTo("home", null, true); },
+						{	success: function() { 
+								if (oController.intervalHandle) clearInterval(oController.intervalHandle);
+								oRouter.navTo("home", null, true);
+							},
 							error: function(oResponse) {
 									MessageBox.confirm(
 										oResponse.responseText,
 										{	actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
 											styleClass: bCompact ? "sapUiSizeCompact" : "",
 											onClose: function(sAction) {
-												sap.ui.core.UIComponent.getRouterFor(oView).navTo("page1", null, true);
+												if (this.intervalHandle) clearInterval(this.intervalHandle);
+												oRouter.navTo("home", null, true);
 											}
 										}
 									);
@@ -135,27 +138,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 								// );
 						}
 			});
-
-		// 	oUreMetadata.update(oPath, oData,
-		// 	success: function() { // Go to the Dashboard
-		// 		oRouter.navTo("home", null, true);
-		// 	},
-
-		// 	error: function() {
-		// 		MessageBox.error( "error", {	
-		// 				actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-		// 				styleClass: bCompact ? "sapUiSizeCompact" : "",
-		// 				onClose: function(sAction) { oRouter.navTo("home", null, true); }
-		// 			}
-		// 		);
-		// 	}
-		// );		
-			
 		},
 
-		// oUreMetadata.setProperty("/END_TIME", new Date());
-		// oUreMetadata.update("/URE_METADATA", {
-		// });
 
 		_onRouteMatchedDashboard: function(oEvent) {
 			var oArgs = oEvent.getParameter("arguments");
