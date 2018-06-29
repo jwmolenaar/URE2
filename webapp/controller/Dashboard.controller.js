@@ -12,21 +12,28 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		 */
 		onInit: function() {
 			var oViewModel = new sap.ui.model.json.JSONModel({
-				raceID : null
+				raceID: null
 			});
 			this.getView().setModel(oViewModel, "viewModel");
-			
+
 			var oDashboardModel = new sap.ui.model.json.JSONModel();
 			this.getView().setModel(oDashboardModel, "dashboardModel");
-			
+
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("dashboard").attachMatched(this._onRouteMatchedDashboard, this);
+
+			
 
 		},
 
 		onBack: function() {
 			//var oModel = this.getView().getModel();
 			var sPreviousHash = History.getInstance().getPreviousHash();
+			
+			//Stop the interval.
+			if (this.intervalHandle) {
+				clearInterval(this.intervalHandle);
+			}
 
 			//The history contains a previous entry
 			if (sPreviousHash !== undefined) {
@@ -63,7 +70,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var aSorters = [];
 			var sortByTimestamp = new sap.ui.model.Sorter("SENSOR_TIMESTAMP", true);
 			aSorters.push(sortByTimestamp);
-			
+
 			var that = this;
 
 			oDataOverview.read(sPath, {
@@ -73,16 +80,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				filters: aFilters,
 				sorters: aSorters,
 				success: function(oData, response) {
-					var newData = oData.results[0];
+					//var newData = oData.results[0];
 					var oDashboardModel = that.getView().getModel("dashboardModel");
 					oDashboardModel.setData(oData);
 				},
 				error: function(oError) {
-					var oError = oError;
+					var oMyError = oError;
 				}
 			});
 		},
-		
+
 		_onRouteMatchedDashboard: function(oEvent) {
 			var oArgs = oEvent.getParameter("arguments");
 			var sRaceID = oArgs.raceID;
@@ -90,6 +97,27 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			oViewModel.setData({
 				raceID: sRaceID
 			});
+			
+			//Start the data refresh service.
+			this._startDashboardService();
+		},
+
+		_startDashboardService: function() {
+			var that = this;
+			this.intervalHandle = setInterval(function() {
+				that.pressRefreshDashboard();
+			}, 500);
+		},
+
+		/**
+		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
+		 * @memberOf mccoy.com.URE2.view.Dashboard
+		 */
+		onExit: function() {
+			//Stop the interval.
+			if (this.intervalHandle) {
+				clearInterval(this.intervalHandle);
+			}
 		}
 
 		/**
@@ -109,14 +137,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		//	onAfterRendering: function() {
 		//
 		//	},
-
-		/**
-		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-		 * @memberOf mccoy.com.URE2.view.Dashboard
-		 */
-		//	onExit: function() {
-		//
-		//	}
 
 	});
 
