@@ -47,6 +47,29 @@ sap.ui.define([
 		
 		onPressDashboard: function(oEvent) {
 			this.getOwnerComponent().getRouter().navTo("dashboard");
+		},
+		
+		onPressURL: function(oEvent) {
+			var sId = this.byId(oEvent.getParameter("id"));
+			switch (sId.getId()) {
+				case "__xmlview1--ureElectric":
+					var sUrl = "http://universityracing.tue.nl/electric";
+					break;
+				case "__xmlview1--ureDriverless":
+					var sUrl = "http://universityracing.tue.nl/driverless";
+					break;
+				case "__xmlview1--mccoyHome":
+					var sUrl = "https://mccoy-partners.com";
+					break;
+				case "__xmlview1--ureHome":
+					var sUrl = "http://universityracing.tue.nl";
+					break;
+				default:
+					var sUrl = "https://mccoy-partners.com"
+					break;
+			}
+
+				sap.m.URLHelper.redirect(sUrl, true);
 		}
 	});
 

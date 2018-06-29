@@ -15,33 +15,42 @@
 			</Bar>
 		</customHeader>
 		<layout:VerticalLayout class="sapUiResponsiveMargin">
-			<Title titleStyle="H3" text="Direct naar" class="sapUiTinyMarginBegin"/>
+			<Title titleStyle="H3" text="Start" class="sapUiTinyMarginBegin"/>
 			<layout:HorizontalLayout allowWrapping="true">
 				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileNewRun}" press="onPressNewRun">
 					<TileContent>
-						<ImageContent src="sap-icon://accelerated"/>
+						<ImageContent src="sap-icon://insurance-car"/>
 					</TileContent>
 				</GenericTile>
-				<GenericTile id="tileAllRuns" class="sapUiTinyMarginBegin sapUiTinyMarginTop" 
-							header="Overzicht geregistreerde runs">
+				<GenericTile id="tileAllRuns" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Overview of runs">
 					<TileContent>
 						<NumericContent visible="{worklistView>/tileAllRunsNumVisable}" value="{worklistView>/tileAllRunsNumValue}"/>
 					</TileContent>
 				</GenericTile>
 			</layout:HorizontalLayout>
-			<Title titleStyle="H3" text="Tijdelijke apps" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
+			<Title titleStyle="H3" text="Cars" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
 			<layout:HorizontalLayout allowWrapping="true">
-				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Dashboard (zonder run)" subheader="Tijdelijk" press="onPressDashboard">
+				<GenericTile id="ureElectric" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Electric" subheader="URE" press="onPressURL">
 					<tileContent>
-						<TileContent></TileContent>
+						<TileContent>
+							<ImageContent src="sap-icon://internet-browser"/>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile id="ureDriverless" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Driverless" subheader="URE" press="onPressURL">
+					<tileContent>
+						<TileContent>
+							<ImageContent src="sap-icon://internet-browser"/>
+						</TileContent>
 					</tileContent>
 				</GenericTile>
 			</layout:HorizontalLayout>
 			<Title titleStyle="H2" text="{i18n>startpageLinksGroupTitle}" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
 			<layout:HorizontalLayout allowWrapping="true">
-				<GenericTile header="{i18n>startpageLineTile1Title}" subheader="{i18n>startpageLineTile1SubTitle}" mode="LineMode"
-					class="sapUiTinyMarginBegin"/>
-				<GenericTile header="{i18n>startpageLineTile2Title}" mode="LineMode" class="sapUiTinyMarginBegin"/>
+				<GenericTile id="mccoyHome" header="{i18n>startpageLineTile1Title}" subheader="{i18n>startpageLineTile1SubTitle}" mode="LineMode"
+					class="sapUiTinyMarginBegin" press="onPressURL"/>
+				<GenericTile id="ureHome" header="{i18n>startpageLineTile2Title}" subheader="{i18n>startpageLineTile2SubTitle}" mode="LineMode" 
+					class="sapUiTinyMarginBegin" press="onPressURL"/>
 			</layout:HorizontalLayout>
 		</layout:VerticalLayout>
 	</Page>
