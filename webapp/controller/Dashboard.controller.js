@@ -1,6 +1,6 @@
 sap.ui.define([	"sap/ui/core/mvc/Controller",
-				"sap/ui/core/routing/History"
-], function(Controller, History) {
+				"sap/m/MessageBox",
+				"sap/ui/core/routing/History" ], function(Controller, MessageBox, History) {
 	"use strict";
 
 	return Controller.extend("mccoy.com.URE2.controller.Dashboard", {
@@ -53,6 +53,57 @@ sap.ui.define([	"sap/ui/core/mvc/Controller",
 					var oError = oError;
 				}
 			});
+		},
+		
+		pressStopDashboard : function() {
+		//*******************************************************************************
+		// Stop the run by updating the end timestamp and go back to the home view
+		//*******************************************************************************
+			var oView = this.getView();
+			var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
+			var oFormData   = this.getView().getModel();
+			var oRouter = this.getOwnerComponent().getRouter();
+			
+			var bCompact = !!oView.$().closest(".sapUiSizeCompact").length;
+
+
+			var raceID = 300;
+			var runID = 1;
+			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
+			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+			oRaceMetaData.setProperty(oPath + "/END_TIME", new Date());
+
+			if (oRaceMetaData.hasPendingChanges()) {
+				oRaceMetaData.submitChanges({
+					success: function(oData) {
+						sap.m.MessageToast.show("Test opgeslagen");
+						oRouter.navTo("home", null, true);
+					},
+					error: function(oError) {
+						sap.m.MessageToast.show("Error with saving current test");
+					}
+				});
+			}
+			else
+				sap.m.MessageToast.show("No pending changes current test");
+
+
+			// oUreMetadata.setProperty("/END_TIME", new Date());
+			// oUreMetadata.update("/URE_METADATA", {
+			// 	success: function() { // Go to the Dashboard
+			// 		oRouter.navTo("home", null, true);
+			// 	},
+				
+			// 	error: function() {
+			// 		MessageBox.error( "error", {	
+			// 				actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+			// 				styleClass: bCompact ? "sapUiSizeCompact" : "",
+			// 				onClose: function(sAction) { oRouter.navTo("home", null, true); }
+			// 			}
+			// 		);
+			// 	}
+			// });
+
 		}
 
 		/**
