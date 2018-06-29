@@ -82,7 +82,7 @@
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBatTempGrp}"
 								subheader="{i18n>tileSubHeaderMostExtValue}">
 								<TileContent>
-									<NumericContent value="{dashboardModel>MAX_TEMP_BUCKET_HIGHEST}" valueColor="Good" scale="°C"/>
+									<NumericContent value="{dashboardModel>/results/0/MAX_TEMP_BUCKET_HIGHEST}" valueColor="Good" scale="°C"/>
 								</TileContent>
 							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderMotTempGrp}"

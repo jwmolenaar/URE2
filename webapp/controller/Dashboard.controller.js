@@ -52,10 +52,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var sPath = "/OVERVIEW";
 
 			var oViewModel = this.getView().getModel("viewModel");
-			var raceID = oViewModel.getPropert("raceID");
+			var sRaceID = oViewModel.getProperty("/raceID");
 
 			var aFilters = [];
-			var filterByRaceId = new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.EQ, raceID);
+			var filterByRaceId = new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.EQ, sRaceID);
 			aFilters.push(filterByRaceId);
 			var filterByRunId = new sap.ui.model.Filter("RUN_ID", sap.ui.model.FilterOperator.EQ, "1");
 			aFilters.push(filterByRunId);
@@ -63,6 +63,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var aSorters = [];
 			var sortByTimestamp = new sap.ui.model.Sorter("SENSOR_TIMESTAMP", true);
 			aSorters.push(sortByTimestamp);
+			
+			var that = this;
 
 			oDataOverview.read(sPath, {
 				urlParameters: {
@@ -72,8 +74,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				sorters: aSorters,
 				success: function(oData, response) {
 					var newData = oData.results[0];
-					var oDashboardModel = this.getView().getModel("dashboardModel");
-					oDashboardModel.setData(newData);
+					var oDashboardModel = that.getView().getModel("dashboardModel");
+					oDashboardModel.setData(oData);
 				},
 				error: function(oError) {
 					var oError = oError;
@@ -81,9 +83,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			});
 		},
 		
-		onRouteMatchedDashboard: function(oEvent) {
+		_onRouteMatchedDashboard: function(oEvent) {
 			var oArgs = oEvent.getParameter("arguments");
-			var sRaceID = oArgs.newRaceID;
+			var sRaceID = oArgs.raceID;
 			var oViewModel = this.getView().getModel("viewModel");
 			oViewModel.setData({
 				raceID: sRaceID
