@@ -109,7 +109,6 @@
 				<footer>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
-						<OverflowToolbarButton text="Refresh" icon="sap-icon://refresh" press="pressRefreshDashboard"/>
 						<OverflowToolbarButton text="Stop" icon="sap-icon://stop" press="pressStopDashboard"/>
 					</OverflowToolbar>
 				</footer>

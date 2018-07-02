@@ -22,7 +22,7 @@ sap.ui.define([
 
 			//Get number of runs.
 			var oUreMetadata = this.getOwnerComponent().getModel("UreMetadata");
-			
+
 			//Old way of working.
 			/*var oUreMetadata = new sap.ui.model.odata.v2.ODataModel("/UreRaceData/OData/UreMetadata.xsodata/", {
 				useBatch: false
@@ -44,11 +44,11 @@ sap.ui.define([
 			var oRouter = this.getOwnerComponent().getRouter();
 			navigateNewRun(oRouter);
 		},
-		
+
 		onPressDashboard: function(oEvent) {
 			this.getOwnerComponent().getRouter().navTo("dashboard");
 		},
-		
+
 		onPressURL: function(oEvent) {
 			var sId = this.byId(oEvent.getParameter("id"));
 			switch (sId.getId()) {
@@ -65,11 +65,11 @@ sap.ui.define([
 					var sUrl = "http://universityracing.tue.nl";
 					break;
 				default:
-					var sUrl = "https://mccoy-partners.com"
+					var sUrl = "https://mccoy-partners.com";
 					break;
 			}
 
-				sap.m.URLHelper.redirect(sUrl, true);
+			sap.m.URLHelper.redirect(sUrl, true);
 		}
 	});
 

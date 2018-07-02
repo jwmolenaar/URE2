@@ -50,7 +50,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			ohighVoltageChart.setColor(sColor);*/
 		},
 
-		pressRefreshDashboard: function() {
+		getDashboardData: function() {
 
 			//Get data for dashboard from oData service.
 			var oDataOverview = this.getOwnerComponent().getModel("OverviewDashboard");
@@ -156,7 +156,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		_startDashboardService: function() {
 			var that = this;
 			this.intervalHandle = setInterval(function() {
-				that.pressRefreshDashboard();
+				that.getDashboardData();
 			}, 500);
 		},
 
