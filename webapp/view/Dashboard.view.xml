@@ -14,7 +14,7 @@
 										<content>
 											<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
 												<mc:items>
-													<mc:HarveyBallMicroChartItem id="highVoltageChart" fraction="100" color="Error"/>
+													<mc:HarveyBallMicroChartItem id="highVoltageChart" fraction="100" color="{= ${dashboardModel>/results/0/HV_ENABLE} >= 1 ? 'Good' : 'Error' }"/>
 												</mc:items>
 											</mc:HarveyBallMicroChart>
 										</content>
@@ -23,7 +23,7 @@
 										<content>
 											<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
 												<mc:items>
-													<mc:HarveyBallMicroChartItem fraction="100" color="Good"/>
+													<mc:HarveyBallMicroChartItem fraction="100" color="{= ${dashboardModel>/results/0/DRIVE_ENABLE} >= 1 ? 'Good' : 'Error' }"/>
 												</mc:items>
 											</mc:HarveyBallMicroChart>
 										</content>
@@ -38,14 +38,14 @@
 												<mc:items>
 													<mc:HarveyBallMicroChartItem fraction="100" color="Good"/>
 												</mc:items>
-											</mc:HarveyBallMicroChart> 
+											</mc:HarveyBallMicroChart>
 										</content>
 									</TileContent>
 									<TileContent footer="B">
 										<content>
 											<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
 												<mc:items>
-													<mc:HarveyBallMicroChartItem fraction="100" color="Error"/>
+													<mc:HarveyBallMicroChartItem fraction="100" color="Good"/>
 												</mc:items>
 											</mc:HarveyBallMicroChart>
 										</content>
@@ -76,31 +76,33 @@
 							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBattery}" subheader="{i18n>tileSubHeaderPercentage}">
 								<TileContent>
-									<NumericContent value="78" valueColor="Good" scale="%"/>
+									<NumericContent value="{dashboardModel>/results/0/STATE_OF_CHARGE}" valueColor="Neutral" scale="%"/>
 								</TileContent>
 							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBatTempGrp}"
 								subheader="{i18n>tileSubHeaderMostExtValue}">
 								<TileContent>
-									<NumericContent value="{dashboardModel>/results/0/MAX_TEMP_BUCKET_HIGHEST}" valueColor="Good" scale="°C"/>
+									<NumericContent value="{dashboardModel>/results/0/MAX_TEMP_BUCKET_HIGHEST}"
+										valueColor="{ path: 'dashboardModel>/results/0/MAX_TEMP_BUCKET_HIGHEST', formatter: '.formatter.batteryTempValueColor' }" scale="°C"/>
 								</TileContent>
 							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderMotTempGrp}"
 								subheader="{i18n>tileSubHeaderMostExtValue}">
 								<TileContent>
-									<NumericContent value="71" valueColor="Error" scale="°C"/>
+									<NumericContent value="{dashboardModel>/results/0/INV_FL_MOTER_TEMP_NTC1}"
+										valueColor="{ path: 'dashboardModel>/results/0/INV_FL_MOTER_TEMP_NTC1', formatter: '.formatter.motorTempValueColor' }" scale="°C"/>
 								</TileContent>
 							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderInvTempGrp}"
 								subheader="{i18n>tileSubHeaderMostExtValue}">
 								<TileContent>
-									<NumericContent value="34" valueColor="Critical" scale="°C"/>
+									<NumericContent value="{dashboardModel>/results/0/INV_FL_PAI_TEMP}" valueColor="{ path: 'dashboardModel>/results/0/INV_FL_PAI_TEMP', formatter: '.formatter.invTempValueColor' }" scale="°C"/>
 								</TileContent>
 							</GenericTile>
-							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBanTempGrp}"
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderTyreTempGrp}"
 								subheader="{i18n>tileSubHeaderMostExtValue}">
 								<TileContent>
-									<NumericContent value="65" valueColor="Critical" scale="°C"/>
+									<NumericContent value="65" valueColor="Neutral" scale="°C"/>
 								</TileContent>
 							</GenericTile>
 						</layout:HorizontalLayout>
