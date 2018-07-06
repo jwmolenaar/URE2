@@ -83,7 +83,11 @@
 								</TileContent>
 							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileSteeringAngle}" subheader="">
-
+								<TileContent footer="{dashboardModel>/results/steeringDirection}">
+									<NumericContent value="{dashboardModel>/results/0/STEERING}" valueColor="Neutral" scale="deg"/>
+								</TileContent>
+							</GenericTile>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileSteeringAngle}" subheader="">
 								<TileContent footer="{dashboardModel>/results/steeringDirection}">
 									<NumericContent value="{dashboardModel>/results/0/STEERING}" valueColor="Neutral" scale="deg"/>
 								</TileContent>
