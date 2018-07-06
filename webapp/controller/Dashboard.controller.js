@@ -81,7 +81,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				filters: aFilters,
 				sorters: aSorters,
 				success: function(oData, response) {
-					//var newData = oData.results[0];
 					var oDashboardModel = that.getView().getModel("dashboardModel");
 					
 					if (response.data.results[0].STEERING < 0)
@@ -90,7 +89,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						oData.results.steeringDirection = that.getView().getModel("i18n").getResourceBundle().getText("right");
 					else
 						oData.results.steeringDirection = "";
-					oData.results[0].STEERING = Math.abs(oData.results[0].STEERING); 
 
 					oDashboardModel.setData(oData);
 					
