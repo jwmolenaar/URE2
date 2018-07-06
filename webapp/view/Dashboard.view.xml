@@ -14,7 +14,8 @@
 										<content>
 											<mc:HarveyBallMicroChart showFractions="false" showTotal="false">
 												<mc:items>
-													<mc:HarveyBallMicroChartItem id="highVoltageChart" fraction="100" color="{= ${dashboardModel>/results/0/HV_ENABLE} >= 1 ? 'Good' : 'Error' }"/>
+													<mc:HarveyBallMicroChartItem id="highVoltageChart" fraction="100"
+														color="{= ${dashboardModel>/results/0/HV_ENABLE} >= 1 ? 'Good' : 'Error' }"/>
 												</mc:items>
 											</mc:HarveyBallMicroChart>
 										</content>
@@ -74,6 +75,13 @@
 									</TileContent>
 								</tileContent>
 							</GenericTile>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderAcceleration}">
+								<TileContent>
+									<content>
+										<Text  text="{ parts: [ 'dashboardModel>/results/0/ACCELERATION_X', 'dashboardModel>/results/0/ACCELERATION_Y' ], formatter : '.formatter.accelerationValue'}" />
+									</content>
+								</TileContent>
+							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBattery}" subheader="{i18n>tileSubHeaderPercentage}">
 								<TileContent>
 									<NumericContent value="{dashboardModel>/results/0/STATE_OF_CHARGE}" valueColor="Neutral" scale="%"/>
@@ -96,7 +104,8 @@
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderInvTempGrp}"
 								subheader="{i18n>tileSubHeaderMostExtValue}">
 								<TileContent>
-									<NumericContent value="{dashboardModel>/results/0/INV_FL_PAI_TEMP}" valueColor="{ path: 'dashboardModel>/results/0/INV_FL_PAI_TEMP', formatter: '.formatter.invTempValueColor' }" scale="°C"/>
+									<NumericContent value="{dashboardModel>/results/0/INV_FL_PAI_TEMP}"
+										valueColor="{ path: 'dashboardModel>/results/0/INV_FL_PAI_TEMP', formatter: '.formatter.invTempValueColor' }" scale="°C"/>
 								</TileContent>
 							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderTyreTempGrp}"
