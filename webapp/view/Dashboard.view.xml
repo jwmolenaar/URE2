@@ -87,11 +87,6 @@
 									<NumericContent value="{dashboardModel>/results/0/STEERING}" valueColor="Neutral" scale="deg"/>
 								</TileContent>
 							</GenericTile>
-							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileSteeringAngle}" subheader="">
-								<TileContent footer="{dashboardModel>/results/steeringDirection}">
-									<NumericContent value="{dashboardModel>/results/0/STEERING}" valueColor="Neutral" scale="deg"/>
-								</TileContent>
-							</GenericTile>
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBattery}" subheader="{i18n>tileSubHeaderPercentage}">
 								<TileContent>
 									<NumericContent value="{dashboardModel>/results/0/STATE_OF_CHARGE}" valueColor="Neutral" scale="%"/>
