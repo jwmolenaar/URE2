@@ -2,7 +2,7 @@
 	xmlns:layout="sap.ui.layout" xmlns:mc="sap.suite.ui.microchart" xmlns:html="http://www.w3.org/1999/xhtml">
 	<App>
 		<pages>
-			<Page title="{i18n>dashboardTitle}" showNavButton="true" navButtonPress="onBack">
+			<Page title="{i18n>dashboardTitle}" showNavButton="false" navButtonPress="onBack">
 				<content>
 					<layout:VerticalLayout class="sapUiResponsiveMargin">
 						<Title titleStyle="H3" text="" class="sapUiTinyMarginBegin"/>
@@ -74,6 +74,14 @@
 									</TileContent>
 								</tileContent>
 							</GenericTile>
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileSteeringAngle}" subheader="">
+
+								<TileContent footer="{dashboardModel>/results/steeringDirection}">
+									<NumericContent value="{dashboardModel>/results/0/STEERING}" valueColor="Neutral" scale="deg"/>
+								</TileContent>
+							</GenericTile>
+
 							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>tileHeaderBattery}" subheader="{i18n>tileSubHeaderPercentage}">
 								<TileContent>
 									<NumericContent value="{dashboardModel>/results/0/STATE_OF_CHARGE}" valueColor="Neutral" scale="%"/>
